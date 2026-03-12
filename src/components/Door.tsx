@@ -40,9 +40,8 @@ const Door = ({ index, phase, isSelected, isRevealed, isFinal, isPrize, onClick 
         aria-disabled={!clickable}
       >
         <div className="door__face">
-          {isPrize ? (
-            <FontAwesomeIcon icon={faTrophy} className="door__icon" />
-          ) : (
+          {isPrize && <FontAwesomeIcon icon={faTrophy} className="door__icon" />}
+          {!isPrize && phase !== GAME_PHASE.SELECTING && (
             <FontAwesomeIcon icon={faClose} className="door__icon door__icon--zonk" />
           )}
         </div>
