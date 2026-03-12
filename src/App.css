@@ -79,11 +79,11 @@ body {
 }
 
 .app-header h1 {
-  font-size: 11vw;
+  text-align: center;
+  font-size: 2rem;
   margin-bottom: 20px;
   font-weight: 900;
   line-height: 1;
-  color: var(--c-red);
 }
 
 .app-header h3 {
@@ -92,7 +92,7 @@ body {
 
 .app-header__rules {
   color: var(--c-text-muted);
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: 1.6;
 }
 
@@ -724,7 +724,7 @@ body {
    ============================================================ */
 @media (max-width: 600px) {
   .app-header h1 {
-    font-size: 15vw;
+    text-align: left;
   }
   .door {
     width: 100px;
