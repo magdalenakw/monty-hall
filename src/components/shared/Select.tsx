@@ -14,6 +14,7 @@ type SelectProps = React.SelectHTMLAttributes<HTMLSelectElement> & {
 
 const Select = ({ options, label, ...rest }: SelectProps) => {
   const id = useId();
+
   return (
     <label className="autoplay__label" htmlFor={id}>
       {label}

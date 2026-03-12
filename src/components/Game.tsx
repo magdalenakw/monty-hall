@@ -1,7 +1,7 @@
 import Door from "./Door";
 import { GAME_PHASE } from "../consts";
 import { type Door as DoorType } from "../hooks/useMontyHall";
-import { useMontyHallContext } from "../context/MontyHallContext";
+import { useMontyHallContext } from "../context/useMontyHallContext";
 
 type Props = {
   resetLabel?: string;

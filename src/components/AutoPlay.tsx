@@ -5,7 +5,7 @@ import GameHistory from "./GameHistory";
 import Select from "./shared/Select";
 import Input from "./shared/Input";
 import { type Strategy } from "../hooks/useMontyHall";
-import { useMontyHallContext } from "../context/MontyHallContext";
+import { useMontyHallContext } from "../context/useMontyHallContext";
 
 const AutoPlay = () => {
   const { runAutoGames } = useMontyHallContext();

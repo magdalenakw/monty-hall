@@ -1,5 +1,5 @@
 import { THEORETICAL_SWITCH_WIN_RATE, THEORETICAL_STAY_WIN_RATE } from "../consts";
-import { useMontyHallContext } from "../context/MontyHallContext";
+import { useMontyHallContext } from "../context/useMontyHallContext";
 
 type StatRowProps = {
   label: string;

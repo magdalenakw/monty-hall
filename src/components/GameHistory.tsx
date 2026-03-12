@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { HISTORIC_DATA_PAGE_SIZE } from "../consts";
-import { useMontyHallContext } from "../context/MontyHallContext";
+import { useMontyHallContext } from "../context/useMontyHallContext";
 import GameHistoryRow from "./GameHistoryRow";
 import GameHistoryPagination from "./GameHistoryPagination";
 
@@ -11,10 +11,12 @@ type Props = {
 const GameHistory = ({ resetToken }: Props) => {
   const { history } = useMontyHallContext();
   const [page, setPage] = useState(1);
+  const [prevResetToken, setPrevResetToken] = useState(resetToken);
 
-  useEffect(() => {
+  if (resetToken !== prevResetToken) {
+    setPrevResetToken(resetToken);
     setPage(1);
-  }, [resetToken]);
+  }
 
   const hasData = history.length > 0;
   const totalPages = hasData ? Math.ceil(history.length / HISTORIC_DATA_PAGE_SIZE) : 1;

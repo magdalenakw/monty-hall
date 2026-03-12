@@ -1,4 +1,4 @@
-import { createContext, useContext, type ReactNode } from "react";
+import { createContext, type ReactNode } from "react";
 import { type Door, type GamePhase, type Strategy, type Stats, type HistoryEntry } from "../hooks/useMontyHall";
 
 export type MontyHallContextValue = {
@@ -22,8 +22,4 @@ export const MontyHallProvider = ({ value, children }: { value: MontyHallContext
   <MontyHallContext.Provider value={value}>{children}</MontyHallContext.Provider>
 );
 
-export const useMontyHallContext = (): MontyHallContextValue => {
-  const ctx = useContext(MontyHallContext);
-  if (!ctx) throw new Error("useMontyHallContext must be used inside MontyHallProvider");
-  return ctx;
-};
+export default MontyHallContext;
