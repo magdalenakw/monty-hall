@@ -86,6 +86,7 @@ export const useMontyHall = () => {
       }));
       setHistory((prev) =>
         [
+          ...prev,
           {
             id: nextId.current++,
             prize: prizeDoor!,
@@ -96,8 +97,7 @@ export const useMontyHall = () => {
             won,
             auto: false,
           },
-          ...prev,
-        ].slice(0, 10_000),
+        ].slice(-10_000),
       );
     },
     [phase, selectedDoor, revealedDoor, prizeDoor],
@@ -164,7 +164,7 @@ export const useMontyHall = () => {
       stayWins: prev.stayWins + stayWins,
       stayLosses: prev.stayLosses + stayLosses,
     }));
-    setHistory((prev) => [...results.reverse(), ...prev].slice(0, 10_000));
+    setHistory((prev) => [...prev, ...results].slice(-10_000));
   }, []);
 
   return {

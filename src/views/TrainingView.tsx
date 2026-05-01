@@ -3,6 +3,7 @@ import { MontyHallProvider } from "../context/MontyHallContext";
 import Game from "../components/Game";
 import Statistics from "../components/Statistics";
 import AutoPlay from "../components/AutoPlay";
+import WinRateChart from "../components/WinRateChart";
 import Layout from "../components/shared/Layout";
 
 const TrainingView = () => {
@@ -23,6 +24,7 @@ const TrainingView = () => {
       >
         <Game />
         <Statistics />
+        <WinRateChart />
         <AutoPlay />
       </Layout>
     </MontyHallProvider>

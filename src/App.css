@@ -45,7 +45,7 @@
   --c-surface2: #d5d5d5;
   --c-border: rgba(0, 31, 63, 0.12);
   --c-text: var(--c-blue);
-  --c-text-muted: rgba(0, 31, 63, 0.5);
+  --c-text-muted: rgba(0, 31, 63, 0.7);
   --c-win: var(--c-green);
   --c-lose: var(--c-red);
   --radius: 12px;
@@ -178,6 +178,20 @@ body {
   color: var(--c-text);
   margin-bottom: 28px;
   min-height: 2.4em;
+}
+
+@keyframes pulse-text {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.gameboard__instruction--pulse {
+  animation: pulse-text 2s ease-in-out infinite;
 }
 
 .gameboard__doors {
@@ -343,7 +357,7 @@ body {
   flex-shrink: 0;
   height: 100%;
   position: relative;
-  background: var(--c-red);
+  background: #c9a84c;
   transition: width 0.9s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .door__panel::before,
@@ -442,7 +456,7 @@ body {
 
 .statistics__header h2 {
   font-size: 1.15rem;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .statistics__total {
@@ -556,7 +570,7 @@ body {
 
 .autoplay h2 {
   font-size: 1.15rem;
-  font-weight: 700;
+  font-weight: 600;
   margin-bottom: 8px;
 }
 
@@ -706,6 +720,30 @@ body {
 }
 .text-lose {
   color: var(--c-lose);
+}
+
+/* ============================================================
+   WinRateChart
+   ============================================================ */
+.win-rate-chart {
+  background: var(--c-surface);
+  border: none;
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--nm-shadow);
+}
+
+.win-rate-chart h2 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.win-rate-chart__desc {
+  font-size: 0.85rem;
+  color: var(--c-text-muted);
+  margin-bottom: 20px;
+  line-height: 1.7;
 }
 
 /* ============================================================

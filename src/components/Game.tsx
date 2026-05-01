@@ -52,7 +52,9 @@ const Game = ({ resetLabel = "Zagraj ponownie" }: Props) => {
         ))}
       </div>
 
-      <p className="gameboard__instruction">{getInstruction()}</p>
+      <p className={`gameboard__instruction${phase === GAME_PHASE.SELECTING ? " gameboard__instruction--pulse" : ""}`}>
+        {getInstruction()}
+      </p>
 
       {phase === GAME_PHASE.DECIDING && (
         <div className="gameboard__actions">
