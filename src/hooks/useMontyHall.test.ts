@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { renderHook, act } from "@testing-library/react";
 import { useMontyHall, hostReveal, getOtherDoor, type Door } from "./useMontyHall";
 import { GAME_PHASE } from "../consts";
@@ -37,15 +37,22 @@ describe("hostReveal", () => {
 });
 
 describe("useMontyHall — game phases", () => {
+  beforeEach(() => vi.useFakeTimers());
+  afterEach(() => vi.useRealTimers());
+
   it("starts in SELECTING phase", () => {
     const { result } = renderHook(() => useMontyHall());
     expect(result.current.phase).toBe(GAME_PHASE.SELECTING);
   });
 
-  it("selectDoor transitions to DECIDING phase", () => {
+  it("selectDoor transitions to REVEALING, then DECIDING after 1s", () => {
     const { result } = renderHook(() => useMontyHall());
     act(() => {
       result.current.selectDoor(0);
+    });
+    expect(result.current.phase).toBe(GAME_PHASE.REVEALING);
+    act(() => {
+      vi.advanceTimersByTime(1000);
     });
     expect(result.current.phase).toBe(GAME_PHASE.DECIDING);
   });
@@ -54,6 +61,7 @@ describe("useMontyHall — game phases", () => {
     const { result } = renderHook(() => useMontyHall());
     act(() => {
       result.current.selectDoor(0);
+      vi.advanceTimersByTime(1000);
     });
     act(() => {
       result.current.decide(false);
@@ -65,6 +73,7 @@ describe("useMontyHall — game phases", () => {
     const { result } = renderHook(() => useMontyHall());
     act(() => {
       result.current.selectDoor(1);
+      vi.advanceTimersByTime(1000);
     });
     act(() => {
       result.current.resetGame();
@@ -76,10 +85,14 @@ describe("useMontyHall — game phases", () => {
 });
 
 describe("useMontyHall - decide", () => {
+  beforeEach(() => vi.useFakeTimers());
+  afterEach(() => vi.useRealTimers());
+
   it("decide(false) — finalDoor equals selectedDoor (no switch)", () => {
     const { result } = renderHook(() => useMontyHall());
     act(() => {
       result.current.selectDoor(0);
+      vi.advanceTimersByTime(1000);
     });
     const selected = result.current.selectedDoor;
     act(() => {
@@ -92,6 +105,7 @@ describe("useMontyHall - decide", () => {
     const { result } = renderHook(() => useMontyHall());
     act(() => {
       result.current.selectDoor(0);
+      vi.advanceTimersByTime(1000);
     });
     const selected = result.current.selectedDoor;
     const revealed = result.current.revealedDoor;
@@ -106,6 +120,7 @@ describe("useMontyHall - decide", () => {
     const { result } = renderHook(() => useMontyHall());
     act(() => {
       result.current.selectDoor(0);
+      vi.advanceTimersByTime(1000);
     });
     act(() => {
       result.current.decide(false);
@@ -118,6 +133,7 @@ describe("useMontyHall - decide", () => {
     const { result } = renderHook(() => useMontyHall());
     act(() => {
       result.current.selectDoor(2);
+      vi.advanceTimersByTime(1000);
     });
     act(() => {
       result.current.decide(true);
