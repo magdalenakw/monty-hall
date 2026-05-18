@@ -21,7 +21,7 @@ const Door = ({ index, phase, isSelected, isRevealed, isFinal, isPrize, onClick 
   else if (phase === GAME_PHASE.RESULT && isFinal && !isPrize) stateClass = "door--lose";
   else if (phase === GAME_PHASE.RESULT) stateClass = "door--revealed";
   else if (isRevealed) stateClass = "door--revealed";
-  else if (isSelected && phase === GAME_PHASE.DECIDING) stateClass = "door--selected";
+  else if (isSelected && (phase === GAME_PHASE.DECIDING || phase === GAME_PHASE.REVEALING)) stateClass = "door--selected";
   else stateClass = "door--selectable";
 
   const clickable = phase === GAME_PHASE.SELECTING || (phase === GAME_PHASE.DECIDING && !isRevealed);

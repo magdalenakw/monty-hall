@@ -17,6 +17,8 @@ const Game = ({ resetLabel = "Zagraj ponownie" }: Props) => {
     switch (phase) {
       case GAME_PHASE.SELECTING:
         return "Wybierz jedną z bramek!";
+      case GAME_PHASE.REVEALING:
+        return "Prowadzący otwiera bramkę...";
       case GAME_PHASE.DECIDING:
         return `Prowadzący otworzył pustą bramkę (${revealedDoor! + 1}). Czy chcesz zmienić swój pierwotny wybór?`;
       case GAME_PHASE.RESULT:

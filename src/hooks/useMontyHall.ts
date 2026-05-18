@@ -59,8 +59,11 @@ export const useMontyHall = () => {
       const revealed = hostReveal(prize, door);
       setPrizeDoor(prize);
       setSelectedDoor(door);
-      setRevealedDoor(revealed);
-      setPhase(GAME_PHASE.DECIDING);
+      setPhase(GAME_PHASE.REVEALING);
+      setTimeout(() => {
+        setRevealedDoor(revealed);
+        setPhase(GAME_PHASE.DECIDING);
+      }, 1000);
     },
     [phase],
   );
